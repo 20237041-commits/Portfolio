@@ -17,7 +17,13 @@ const cors     = require("cors");
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    'https://20237041-commits.github.io',
+    'http://localhost:5173'
+  ],
+  methods: ['GET', 'POST'],
+}));
 app.use(express.json());
 
 // ── MongoDB Connection ────────────────────────────────────────

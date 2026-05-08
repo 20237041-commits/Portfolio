@@ -1,0 +1,99 @@
+/* ============================================================
+   src/App.css — DESIGN TOKENS & SHARED STYLES
+   ↓ Change your site-wide colours, fonts, and spacing here.
+   ============================================================ */
+
+/* ── COLOUR TOKENS ─────────────────────────────────────────── */
+:root {
+  --sidebar-w : 220px;
+  --bg        : #0c0e14;      /* page background              */
+  --sidebar   : #11141d;      /* sidebar panel background     */
+  --border    : #1c2032;      /* borders / dividers           */
+  --accent    : #00d4ff;      /* primary accent — cyan        */
+  --accent2   : #7b5cff;      /* secondary accent — violet    */
+  --text      : #e8eaf0;      /* primary text                 */
+  --muted     : #6b7280;      /* labels / secondary text      */
+  --card      : #161923;      /* card / input backgrounds     */
+  --ease      : cubic-bezier(.4, 0, .2, 1);
+}
+
+/* ── APP SHELL ──────────────────────────────────────────────── */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+#main-content {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  min-height: 100vh;
+}
+
+/* ── PAGE WRAPPER (every page uses this) ───────────────────── */
+.page-wrap {
+  padding: 64px 56px 72px;
+  animation: pageEnter .38s var(--ease) both;
+}
+
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ── PAGE HEADER ────────────────────────────────────────────── */
+.page-header    { margin-bottom: 52px; }
+.page-label     {
+  font-size: .68rem; letter-spacing: .3em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 10px;
+}
+.page-title     {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.9rem, 3.8vw, 2.75rem);
+  font-weight: 900; line-height: 1.1;
+}
+.page-title span { color: var(--accent); }
+.page-sub       {
+  margin-top: 12px; color: var(--muted);
+  font-size: .9rem; max-width: 520px; line-height: 1.75;
+}
+.bar {
+  width: 44px; height: 3px; border-radius: 99px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  margin-top: 16px;
+}
+
+/* ── SHARED BUTTON ──────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 28px; border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: .875rem; font-weight: 500;
+  cursor: pointer; text-decoration: none; border: none;
+  transition: transform .2s var(--ease), box-shadow .2s var(--ease);
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0, 212, 255, .28);
+}
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.btn-outline:hover {
+  border-color: var(--accent); color: var(--accent);
+  transform: translateY(-2px);
+}
+.btn:disabled {
+  opacity: .65; cursor: not-allowed; transform: none !important;
+}
+
+/* ── RESPONSIVE ─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  #main-content { margin-left: 0; }
+  .page-wrap    { padding: 72px 22px 52px; }
+}

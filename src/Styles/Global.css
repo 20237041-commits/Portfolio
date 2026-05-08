@@ -1,0 +1,88 @@
+/* ============================================================
+   src/styles/global.css  — CSS TOKENS & SHARED STYLES
+   Change colours / fonts / spacing here to restyle the whole site.
+   ============================================================ */
+
+/* ── COLOUR TOKENS ──────────────────────────────────────────── */
+:root {
+  --sidebar-w:  220px;
+  --bg-dark:    #0c0e14;       /* main page background      */
+  --sidebar:    #11141d;       /* sidebar background        */
+  --border:     #1c2032;       /* borders / dividers        */
+  --accent:     #00d4ff;       /* primary accent — cyan     */
+  --accent2:    #7b5cff;       /* secondary accent — violet */
+  --text:       #e8eaf0;       /* primary text              */
+  --muted:      #6b7280;       /* secondary / label text    */
+  --card:       #161923;       /* card backgrounds          */
+  --transition: .35s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── RESET ──────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg-dark);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+
+/* ── LAYOUT ─────────────────────────────────────────────────── */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+#main-content {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  min-height: 100vh;
+}
+
+/* ── PAGE WRAPPER (all pages use this) ──────────────────────── */
+.page-wrap {
+  padding: 64px 56px;
+  animation: pageEnter var(--transition) both;
+}
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ── PAGE HEADER ────────────────────────────────────────────── */
+.page-header     { margin-bottom: 52px; }
+.page-label      { font-size: .7rem; letter-spacing: .28em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.page-title      { font-family: 'Playfair Display', serif; font-size: clamp(2rem,4vw,2.8rem); font-weight: 900; line-height: 1.1; }
+.page-title span { color: var(--accent); }
+.page-sub        { margin-top: 12px; color: var(--muted); font-size: .9rem; max-width: 520px; line-height: 1.75; }
+.bar             { width: 44px; height: 3px; border-radius: 99px; background: linear-gradient(90deg, var(--accent), var(--accent2)); margin-top: 16px; }
+
+/* ── BUTTONS ────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 28px; border-radius: 8px;
+  font-family: 'DM Sans', sans-serif; font-size: .875rem; font-weight: 500;
+  cursor: pointer; text-decoration: none; border: none;
+  transition: transform .2s, box-shadow .2s;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,212,255,.28); }
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+/* ── RESPONSIVE ─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  #main-content { margin-left: 0; }
+  .page-wrap    { padding: 64px 24px 48px; }
+}

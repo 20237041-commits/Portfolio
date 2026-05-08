@@ -24,7 +24,7 @@ app.use(express.json());
 // ↓ Replace this with YOUR MongoDB Atlas connection string
 // (same way your professor showed in Step 6 of the module)
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect("mongodb+srv://20237041_db_user:20237041@cluster0.vmfoxeo.mongodb.net/portfolio?retryWrites=true&w=majority")
   .then(() => console.log("MongoDB Connected"))
   .catch(console.error);
 
@@ -56,5 +56,4 @@ app.post("/contact", async (req, res) => {
 });
 
 // ── Start Server ──────────────────────────────────────────────
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(5000, () => console.log("Server running on port 5000"));

@@ -56,7 +56,7 @@ export default function Contact() {
 
     try {
       // POST request to our backend — same as professor's /register
-      const res = await fetch("https://portfolio-production-b5e5.up.railway.app/contact", {
+      const res = await fetch("http://localhost:5000/contact", {
         method  : "POST",
         headers : { "Content-Type": "application/json" },
         body    : JSON.stringify({

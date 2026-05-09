@@ -35,36 +35,28 @@ import Portfolio from './Pages/Portfolio'
 import Services  from './Pages/Services'
 import Contact   from './Pages/Contact'
 import Notfound  from './Pages/Notfound'
+import Admin from './Pages/Admin'
 
 export default function App() {
   return (
     // BrowserRouter: gives every child component access to
     // the current URL and navigation functions via React Context.
-    <BrowserRouter>
-      <div className="app-shell">
-
-        {/* Sidebar is outside <Routes> so it always renders */}
-        <Sidebar />
-
-        {/* Only this area re-renders on navigation */}
-        <main id="main-content">
-          {/*
-            Routes: scans children top-to-bottom and renders
-            the first <Route> whose path matches the current URL.
-          */}
-          <Routes>
-            <Route path="/"          element={<Home />}      />
-            <Route path="/about"     element={<About />}     />
-            <Route path="/resume"    element={<Resume />}    />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/services"  element={<Services />}  />
-            <Route path="/contact"   element={<Contact />}   />
-            {/* Catch-all: any URL that doesn't match above */}
-            <Route path="*"          element={<Notfound />}  />
-          </Routes>
-        </main>
-
-      </div>
-    </BrowserRouter>
+   <BrowserRouter basename="/Portfolio">
+  <div className="app-shell">
+    <Sidebar />
+    <main id="main-content">
+      <Routes>
+        <Route path="/"          element={<Home />}      />
+        <Route path="/about"     element={<About />}     />
+        <Route path="/resume"    element={<Resume />}    />
+        <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/services"  element={<Services />}  />
+        <Route path="/contact"   element={<Contact />}   />
+        <Route path="/admin"     element={<Admin />}     />
+        <Route path="*"          element={<Notfound />}  />
+      </Routes>
+    </main>
+  </div>
+</BrowserRouter>
   )
 }

@@ -1,18 +1,7 @@
-// ============================================================
-//  src/Pages/Contact.tsx  →  Route: /contact
-//  ── CONTACT PAGE — Connected to MongoDB ──
-//
-//  Follows the same pattern as your professor's Register.tsx:
-//    1. useState stores form fields          (same as formData)
-//    2. handleChange updates state           (same pattern)
-//    3. handleSubmit sends POST to backend   (same fetch pattern)
-//    4. Clears form after success            (same pattern)
-// ============================================================
-
 import { useState, type FormEvent, type ChangeEvent } from 'react'
+import emailjs from '@emailjs/browser'
 import { CONTACT_INFO } from '../Data/PortfolioData'
 
-// ── Same interface pattern your professor used for form fields ─
 interface FormState {
   firstName : string
   lastName  : string
@@ -23,7 +12,6 @@ interface FormState {
 
 type Status = 'idle' | 'sending' | 'sent' | 'error'
 
-// Empty form — same as your professor's initial state
 const INITIAL_FORM: FormState = {
   firstName : '',
   lastName  : '',
@@ -34,60 +22,57 @@ const INITIAL_FORM: FormState = {
 
 export default function Contact() {
 
-  // ── useState: same as professor's formData ────────────────
   const [formData, setFormData] = useState<FormState>(INITIAL_FORM)
   const [status,   setStatus]   = useState<Status>('idle')
 
-  // ── handleChange: same pattern as professor's module ──────
-  // Updates only the field that changed, keeps others the same
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setFormData({
-      ...formData,                    // keep all other fields
-      [e.target.name]: e.target.value // update only this field
-    })
+    setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  // ── handleSubmit: same fetch pattern as professor's module ─
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setStatus('sending')
 
+    const templateParams = {
+      from_name : `${formData.firstName} ${formData.lastName}`,
+      reply_to  : formData.email,
+      subject   : formData.subject,
+      message   : formData.message,
+    }
+
+    // ── MongoDB save ───────────────────────────────────────────
+    const saveToMongo = fetch('http://localhost:5000/contact', {
+      method  : 'POST',
+      headers : { 'Content-Type': 'application/json' },
+      body    : JSON.stringify(formData),
+    }).then(res => {
+      if (!res.ok) throw new Error('MongoDB save failed')
+      return res.json()
+    })
+
+    // ── EmailJS send ───────────────────────────────────────────
+    const sendEmail = emailjs.send(
+      import.meta.env.VITE_EMAIL_SERVICE_ID,
+      import.meta.env.VITE_EMAIL_TEMPLATE_ID,
+      templateParams,
+      import.meta.env.VITE_EMAIL_PUBLIC_KEY,
+    )
+
     try {
-      // POST request to our backend — same as professor's /register
-      const res = await fetch("https://portfolio-production-b5e5.up.railway.app/contact", {
-        method  : "POST",
-        headers : { "Content-Type": "application/json" },
-        body    : JSON.stringify({
-          firstName : formData.firstName,
-          lastName  : formData.lastName,
-          email     : formData.email,
-          subject   : formData.subject,
-          message   : formData.message,
-        }),
-      })
-
-      const data = await res.json()
-
-      if (!res.ok) throw new Error(data.error || 'Something went wrong')
-
+      // ── Both fire at the same time ─────────────────────────
+      await Promise.all([sendEmail, saveToMongo])
       setStatus('sent')
-
-      // Clear form after success — same as professor's module
       setFormData(INITIAL_FORM)
-
-      // Reset button back to normal after 3 seconds
       setTimeout(() => setStatus('idle'), 3500)
-
     } catch (error) {
-      console.error(error)
+      console.error('Submission error:', error)
       setStatus('error')
       setTimeout(() => setStatus('idle'), 3000)
     }
   }
 
-  // Button label and icon change based on status
   const btnMeta: Record<Status, { label: string; icon: string; bg?: string }> = {
     idle   : { label: 'Send Message',       icon: 'fas fa-paper-plane' },
     sending: { label: 'Sending…',           icon: 'fas fa-circle-notch fa-spin' },

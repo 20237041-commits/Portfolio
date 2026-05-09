@@ -15,13 +15,12 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// ── Admin credentials ──────────────────────────────────────────
 const ADMIN_USER = "admin";
-const ADMIN_PASS = "admin123"; // change this
+const ADMIN_PASS = "admin123"; 
 
-mongoose.connect("mongodb+srv://20237041_db_user:67ZZX1SRKjgJj12i@cluster0.vmfoxeo.mongodb.net/Testing?retryWrites=true&w=majority&appName=Cluster0")
-  .then(() => console.log("✅ Connected to MongoDB"))
-  .catch((err) => console.error("❌ MongoDB error:", err));
+mongoose.connect("mongodb+srv://20237041_db_user:67ZZX1SRKjgJj12i@cluster0.vmfoxeo.mongodb.net/Portfolio?retryWrites=true&w=majority&appName=Cluster0")
+  .then(() => console.log(" Connected to MongoDB"))
+  .catch((err) => console.error(" MongoDB error:", err));
 
 const contactSchema = new mongoose.Schema({
   firstName : String,
@@ -33,7 +32,6 @@ const contactSchema = new mongoose.Schema({
 
 const Contact = mongoose.model("Contact", contactSchema);
 
-// ── POST /contact — save message ───────────────────────────────
 app.post("/contact", async (req, res) => {
   try {
     const { firstName, lastName, email, subject, message } = req.body;
@@ -46,7 +44,6 @@ app.post("/contact", async (req, res) => {
   }
 });
 
-// ── POST /admin/login — verify credentials ─────────────────────
 app.post("/admin/login", (req, res) => {
   const { username, password } = req.body;
   if (username === ADMIN_USER && password === ADMIN_PASS) {
@@ -56,7 +53,6 @@ app.post("/admin/login", (req, res) => {
   }
 });
 
-// ── GET /admin/messages — fetch all messages ───────────────────
 app.get("/admin/messages", async (req, res) => {
   try {
     const messages = await Contact.find().sort({ createdAt: -1 });
@@ -66,7 +62,6 @@ app.get("/admin/messages", async (req, res) => {
   }
 });
 
-// ── DELETE /admin/messages/:id — delete a message ─────────────
 app.delete("/admin/messages/:id", async (req, res) => {
   try {
     await Contact.findByIdAndDelete(req.params.id);
@@ -76,4 +71,4 @@ app.delete("/admin/messages/:id", async (req, res) => {
   }
 });
 
-app.listen(5000, () => console.log("🚀 Server running on http://localhost:5000"));
+app.listen(5000, () => console.log(" Server running on http://localhost:5000"));

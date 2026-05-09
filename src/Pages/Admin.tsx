@@ -105,7 +105,7 @@ export default function Admin() {
   return (
     <div style={styles.dashWrap}>
       <div style={styles.dashHeader}>
-        <h2 style={styles.dashTitle}>📬 Contact Messages ({messages.length})</h2>
+        <h2 style={styles.dashTitle}> Contact Messages ({messages.length})</h2>
         <button style={styles.logoutBtn} onClick={handleLogout}>Logout</button>
       </div>
 
@@ -127,7 +127,7 @@ export default function Admin() {
                   style={styles.deleteBtn}
                   onClick={() => handleDelete(msg._id)}
                 >
-                  🗑 Delete
+                   Delete
                 </button>
               </div>
             </div>
@@ -140,6 +140,7 @@ export default function Admin() {
   )
 }
 
+// ── Inline styles ──────────────────────────────────────────────
 const styles: Record<string, React.CSSProperties> = {
   loginWrap  : { minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0a0a0a' },
   loginBox   : { background: '#111', border: '1px solid #222', borderRadius: 14, padding: 40, display: 'flex', flexDirection: 'column', gap: 14, width: 340 },

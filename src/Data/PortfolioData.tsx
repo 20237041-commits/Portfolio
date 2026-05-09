@@ -1,4 +1,6 @@
 import Ako from '../assets/Ako.jpg'; 
+import Pogi from '../assets/Ako.jpg'; 
+import Track from '../assets/Ako.jpg'; 
 import Cable from '../assets/Cable.jpg'; 
 import School from '../assets/School.png'; 
 import feedback from '../assets/feedback.png'; 
@@ -78,14 +80,12 @@ export interface RouteConfig {
   icon : string;
 }
 
-// ── PROFILE ──────────────────────────────────────────────────
-// ↓ Replace every value with your own info
+
 export const PROFILE: Profile = {
   name     : 'Jr Aclibon',
   tagline  : 'Networking & Web Designer',
-  avatar   : Ako,
+  avatar   : Pogi,
   heroImage: Ako,
-  // Words that cycle in the typing animation on Home
   typingWords: ['Networking', 'Web Designer', 'Developer'],
   info: {
     birthday : 'Febuary 12, 2007',
@@ -93,7 +93,7 @@ export const PROFILE: Profile = {
     location : 'Baguio City, Benguet',
     email    : '20237041@.ubaguio.edu',
     phone    : '63+ 09274866505',
-    freelance: true,              // true → shows "Available"
+    freelance: true,              
   },
   bio: [
     'Hi, I\'m Jr  A dedicated Bachelor of Science in Information Technology (BSIT) student at the University of Baguio, with a strong interest in developing technical skills and practical knowledge in the field of IT. Eager to learn, adaptable, and committed to continuous growth, with a focus on applying academic knowledge to real-world challenges.',
@@ -101,7 +101,6 @@ export const PROFILE: Profile = {
   ],
 };
 
-// ── SOCIAL LINKS ──────────────────────────────────────────────
 export const SOCIALS: Social[] = [
   { icon: facebook ,  href: 'https://facebook.com',  label: 'Facebook'  },
   { icon: instagram,   href: 'https://instagram.com', label: 'Instagram' },
@@ -159,12 +158,15 @@ export const EDUCATION: TimelineItem[] = [
   },
 ];
 
-// ── PORTFOLIO PROJECTS ────────────────────────────────────────
-// cat must be: 'web' | 'photo' | 'brand'
+
+
 export const PROJECTS: Project[] = [
   { cat:'web',   title:'University Enrollment System',  label:'Web Design',  img:School, link:'https://20237041-commits.github.io/MG_LAB5_Aclibonn/' },
-  { cat:'network', title:'Ethernet Crimping',       label:'Networking', img:Cable, link:'#' },
+  { cat:'web',   title:'Workout Tracker',        label:'Web Design',  img:Track, link:'https://20237041-commits.github.io/TrackThatGain/' },
   { cat:'web',   title:'Feed Back System',        label:'Web Design',  img:feedback, link:'https://20237041-commits.github.io/Finals-1/' },
+  { cat:'network', title:'Ethernet Crimping',       label:'Networking', img:Cable, link:'https://20237041-commits.github.io/networking/' },
+  
+
   
 ];
 
@@ -184,9 +186,6 @@ export const CONTACT_INFO: ContactItem[] = [
   { icon:'fas fa-clock',          label:'Availability', value:'Mon – Fri, 9am – 6pm'          },
 ];
 
-// ── ROUTE CONFIG ──────────────────────────────────────────────
-// Drives both the Sidebar nav AND the Route declarations in App.tsx.
-// path values must match the <Route path="..."> in App.tsx.
 export const ROUTES: RouteConfig[] = [
   { path:'/',          label:'Home',      icon:'fas fa-house'       },
   { path:'/about',     label:'About',     icon:'fas fa-user'        },

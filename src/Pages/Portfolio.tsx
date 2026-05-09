@@ -1,27 +1,10 @@
-// ============================================================
-//  src/Pages/Portfolio.tsx  →  Route: /portfolio
-//  ── PORTFOLIO PAGE ──
-//
-//  React Router hook:
-//    useSearchParams() — reads & writes URL query parameters.
-//    The active filter category is stored IN the URL as:
-//      /portfolio?filter=web
-//    This means filters are bookmarkable and shareable.
-//    Clicking a filter button calls setSearchParams() which
-//    updates the URL without a full page reload.
-//
-//  What to edit:
-//    • Projects    → data/portfolioData.ts → PROJECTS
-//    • Filter tabs → FILTERS array below
-//    • Card size   → .p-grid minmax() in the CSS block
-// ============================================================
 
-import { useSearchParams }            from 'react-router-dom'   // ← Router
+
+import { useSearchParams }            from 'react-router-dom'   
 import { PROJECTS }                   from '../Data/PortfolioData'
 import type { ProjectCategory }       from '../Data/PortfolioData'
 
-// ── Filter tab definitions ────────────────────────────────────
-// Add new categories here AND add matching 'cat' values in PROJECTS
+
 interface FilterOption {
   key  : 'all' | ProjectCategory
   label: string
@@ -34,16 +17,11 @@ const FILTERS: FilterOption[] = [
 ]
 
 export default function Portfolio() {
-  /*
-    useSearchParams() returns a tuple:
-      searchParams  — read URL params  (like URLSearchParams)
-      setSearchParams — write URL params (re-renders component)
-  */
+  
   const [searchParams, setSearchParams] = useSearchParams()
   const activeFilter = (searchParams.get('filter') ?? 'all') as 'all' | ProjectCategory
 
   const setFilter = (key: 'all' | ProjectCategory) => {
-    // Remove the query param entirely for "all" → cleaner URL
     setSearchParams(key === 'all' ? {} : { filter: key })
   }
 
@@ -60,7 +38,6 @@ export default function Portfolio() {
         <div className="bar" />
       </header>
 
-      {/* ── Filter buttons — update URL query param on click ── */}
       <nav className="filter-bar" aria-label="Portfolio filters">
         {FILTERS.map(f => (
           <button
@@ -74,8 +51,7 @@ export default function Portfolio() {
         ))}
       </nav>
 
-      {/* ── Project cards ── */}
-      {/* ↓ Card data comes from data/portfolioData.ts → PROJECTS */}
+
       <div className="p-grid" role="list">
         {visible.map((proj, i) => (
           <a

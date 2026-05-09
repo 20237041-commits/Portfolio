@@ -35,7 +35,7 @@ export default function Admin() {
     setLoading(true)
 
     try {
-      const res  = await fetch('http://localhost:5000/admin/login', {
+      const res  = await fetch('https://your-railway-url.up.railway.app/admin/login', {
         method  : 'POST',
         headers : { 'Content-Type': 'application/json' },
         body    : JSON.stringify({ username, password }),
@@ -57,14 +57,14 @@ export default function Admin() {
   }
 
   const fetchMessages = async () => {
-    const res  = await fetch('http://localhost:5000/admin/messages')
+    const res  = await fetch('https://your-railway-url.up.railway.app/admin/messages')
     const data = await res.json()
     setMessages(data)
   }
 
   const handleDelete = async (id: string) => {
     if (!confirm('Delete this message?')) return
-    await fetch(`http://localhost:5000/admin/messages/${id}`, { method: 'DELETE' })
+    await fetch(`https://your-railway-url.up.railway.app/admin/messages/${id}`, { method: 'DELETE' })
     setMessages(prev => prev.filter(m => m._id !== id))
   }
 

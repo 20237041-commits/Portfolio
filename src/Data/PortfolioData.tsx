@@ -1,7 +1,7 @@
 import Ako from '../assets/Ako.jpg'; 
-import Pogi from '../assets/Ako.jpg'; 
-import Track from '../assets/Ako.jpg'; 
-import Cable from '../assets/Cable.jpg'; 
+import Pogi from '../assets/Pogi.jpg'; 
+import Track from '../assets/Track.png'; 
+import networkme from '../assets/networkme.png'; 
 import School from '../assets/School.png'; 
 import feedback from '../assets/feedback.png'; 
 import facebook from '../assets/facebook.avif'; 
@@ -164,7 +164,7 @@ export const PROJECTS: Project[] = [
   { cat:'web',   title:'University Enrollment System',  label:'Web Design',  img:School, link:'https://20237041-commits.github.io/MG_LAB5_Aclibonn/' },
   { cat:'web',   title:'Workout Tracker',        label:'Web Design',  img:Track, link:'https://20237041-commits.github.io/TrackThatGain/' },
   { cat:'web',   title:'Feed Back System',        label:'Web Design',  img:feedback, link:'https://20237041-commits.github.io/Finals-1/' },
-  { cat:'network', title:'Ethernet Crimping',       label:'Networking', img:Cable, link:'https://20237041-commits.github.io/networking/' },
+  { cat:'network', title:'Networking Profile',       label:'Networking', img:networkme, link:'https://20237041-commits.github.io/networking/' },
   
 
   

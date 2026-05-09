@@ -1,23 +1,17 @@
-/* ============================================================
-   src/App.css — DESIGN TOKENS & SHARED STYLES
-   ↓ Change your site-wide colours, fonts, and spacing here.
-   ============================================================ */
 
-/* ── COLOUR TOKENS ─────────────────────────────────────────── */
 :root {
   --sidebar-w : 220px;
-  --bg        : #0c0e14;      /* page background              */
-  --sidebar   : #11141d;      /* sidebar panel background     */
-  --border    : #1c2032;      /* borders / dividers           */
-  --accent    : #00d4ff;      /* primary accent — cyan        */
-  --accent2   : #7b5cff;      /* secondary accent — violet    */
-  --text      : #e8eaf0;      /* primary text                 */
-  --muted     : #6b7280;      /* labels / secondary text      */
-  --card      : #161923;      /* card / input backgrounds     */
+  --bg        : #0c0e14;      
+  --sidebar   : #11141d;      
+  --border    : #1c2032;      
+  --accent    : #00d4ff;      
+  --accent2   : #7b5cff;      
+  --text      : #e8eaf0;      
+  --muted     : #6b7280;      
+  --card      : #161923;     
   --ease      : cubic-bezier(.4, 0, .2, 1);
 }
 
-/* ── APP SHELL ──────────────────────────────────────────────── */
 .app-shell {
   display: flex;
   min-height: 100vh;
@@ -29,7 +23,6 @@
   min-height: 100vh;
 }
 
-/* ── PAGE WRAPPER (every page uses this) ───────────────────── */
 .page-wrap {
   padding: 64px 56px 72px;
   animation: pageEnter .38s var(--ease) both;
@@ -40,7 +33,6 @@
   to   { opacity: 1; transform: none; }
 }
 
-/* ── PAGE HEADER ────────────────────────────────────────────── */
 .page-header    { margin-bottom: 52px; }
 .page-label     {
   font-size: .68rem; letter-spacing: .3em;
@@ -62,7 +54,6 @@
   margin-top: 16px;
 }
 
-/* ── SHARED BUTTON ──────────────────────────────────────────── */
 .btn {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 12px 28px; border-radius: 8px;
@@ -92,7 +83,6 @@
   opacity: .65; cursor: not-allowed; transform: none !important;
 }
 
-/* ── RESPONSIVE ─────────────────────────────────────────────── */
 @media (max-width: 900px) {
   #main-content { margin-left: 0; }
   .page-wrap    { padding: 72px 22px 52px; }

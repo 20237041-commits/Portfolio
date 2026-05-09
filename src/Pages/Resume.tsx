@@ -1,18 +1,8 @@
-// ============================================================
-//  src/Pages/Resume.tsx  →  Route: /resume
-//  ── RESUME PAGE ──
-//  No router hooks needed here — purely display.
-//
-//  What to edit:
-//    • Work experience → data/portfolioData.ts → EXPERIENCE
-//    • Education       → data/portfolioData.ts → EDUCATION
-//    • Tech tags       → data/portfolioData.ts → TECH_TAGS
-// ============================================================
+
 
 import { EXPERIENCE, EDUCATION, TECH_TAGS } from '../Data/PortfolioData'
 import type { TimelineItem } from '../Data/PortfolioData'
 
-// ── Reusable typed timeline component ────────────────────────
 function Timeline({ items }: { items: TimelineItem[] }) {
   return (
     <div className="timeline">
@@ -41,8 +31,7 @@ export default function Resume() {
 
       <div className="resume-grid">
 
-        {/* ── Work Experience ── */}
-        {/* ↓ Data → data/portfolioData.ts → EXPERIENCE */}
+
         <div className="tl-section">
           <h2 className="tl-heading">
             <i className="fas fa-briefcase" aria-hidden="true" /> Work Experience
@@ -50,8 +39,7 @@ export default function Resume() {
           <Timeline items={EXPERIENCE} />
         </div>
 
-        {/* ── Education + Tech Tags ── */}
-        {/* ↓ Data → data/portfolioData.ts → EDUCATION & TECH_TAGS */}
+
         <div className="tl-section">
           <h2 className="tl-heading">
             <i className="fas fa-graduation-cap" aria-hidden="true" /> Education

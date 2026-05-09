@@ -1,32 +1,15 @@
-// ============================================================
-//  src/Pages/Home.tsx  →  Route: /
-//  ── HOME / HERO PAGE ──
-//
-//  React Router hook:
-//    useNavigate() — returns navigate(), which changes the URL
-//    without a full page reload. Used by the CTA buttons.
-//    e.g. navigate('/portfolio') → loads the Portfolio route.
-//
-//  What to edit:
-//    • Typing words  → data/portfolioData.ts → PROFILE.typingWords
-//    • Your name     → data/portfolioData.ts → PROFILE.name
-//    • CTA buttons   → change the path strings in navigate() calls
-//    • Hero gradient → .hero-bg CSS in the <style> block below
-// ============================================================
+
 
 import { useEffect, useRef } from 'react'
 import { useNavigate }       from 'react-router-dom'    // ← Router
 import { PROFILE }           from '../Data/PortfolioData'
 
 export default function Home() {
-  // useNavigate returns a function; call it to change the URL
   const navigate  = useNavigate()
   const typedRef  = useRef<HTMLElement>(null)
 
-  // Internal typing-animation state (kept in a ref to avoid re-renders)
   const stateRef  = useRef({ wi: 0, ci: 0, deleting: false, timer: 0 })
 
-  // ── Typing animation ─────────────────────────────────────
   useEffect(() => {
     const words = PROFILE.typingWords
     const s     = stateRef.current
@@ -58,45 +41,39 @@ export default function Home() {
 
   return (
     <section id="home-page">
-      {/* Layered background — edit gradient colours in CSS below */}
       <div className="hero-bg"       aria-hidden="true" />
       <div className="hero-grid"     aria-hidden="true" />
       <div className="hero-blob b1"  aria-hidden="true" />
       <div className="hero-blob b2"  aria-hidden="true" />
 
       <div className="hero-content">
-        {/* Eyebrow label */}
         <p className="hero-eyebrow">✦ Welcome to my Portfolio</p>
 
-        {/* Name — edit in portfolioData.ts → PROFILE.name */}
         <h1 className="hero-name">
           <span>{PROFILE.name}</span>
         </h1>
 
-        {/* Animated typing line */}
         <p className="hero-sub">
           I'm a{' '}
           <strong ref={typedRef as React.RefObject<HTMLElement>} />
           <span className="cursor" aria-hidden="true" />
         </p>
 
-        {/* CTA buttons — navigate() changes the URL */}
         <div className="hero-btns">
           <button
             className="btn btn-primary"
-            onClick={() => navigate('/portfolio')}   /* ↑ edit target path */
+            onClick={() => navigate('/portfolio')}   
           >
             <i className="fas fa-eye" aria-hidden="true" /> View Work
           </button>
           <button
             className="btn btn-outline"
-            onClick={() => navigate('/contact')}     /* ↑ edit target path */
+            onClick={() => navigate('/contact')}    
           >
             <i className="fas fa-paper-plane" aria-hidden="true" /> Hire Me
           </button>
         </div>
 
-        {/* Decorative scroll hint */}
         <div className="scroll-hint" aria-hidden="true">
           <span>Scroll</span>
           <div className="scroll-line" />

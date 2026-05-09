@@ -1,17 +1,6 @@
-// ============================================================
-//  src/Pages/Notfound.tsx  →  Route: * (catch-all 404)
-//  ── NOT FOUND PAGE ──
-//
-//  React Router hooks:
-//    useNavigate()  — button click sends user back to /
-//    useLocation()  — reads the current URL path so we can
-//                     show which path wasn't found.
-//
-//  This route is defined LAST in App.tsx with path="*" so it
-//  only matches URLs that no other route has claimed.
-// ============================================================
 
-import { useNavigate, useLocation } from 'react-router-dom'   // ← Router
+
+import { useNavigate, useLocation } from 'react-router-dom'  
 
 export default function Notfound() {
   const navigate = useNavigate()
@@ -21,19 +10,16 @@ export default function Notfound() {
     <section id="notfound-page">
       <div className="nf-inner">
 
-        {/* Large 404 heading */}
         <p className="nf-code" aria-label="Error 404">404</p>
 
         <h1 className="nf-title">Page Not Found</h1>
 
-        {/* Shows which URL was attempted — from useLocation() */}
         <p className="nf-msg">
           The path{' '}
           <code>{location.pathname}</code>
           {' '}doesn't exist.
         </p>
 
-        {/* navigate('/') goes back to Home */}
         <button className="btn btn-primary" onClick={() => navigate('/')}>
           <i className="fas fa-house" aria-hidden="true" /> Back to Home
         </button>

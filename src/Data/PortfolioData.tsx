@@ -84,8 +84,8 @@ export interface RouteConfig {
 export const PROFILE: Profile = {
   name     : 'Jr Aclibon',
   tagline  : 'Networking & Web Designer',
-  avatar   : Pogi,
-  heroImage: Ako,
+  avatar   : Ako,
+  heroImage: Pogi,
   typingWords: ['Networking', 'Web Designer', 'Developer'],
   info: {
     birthday : 'Febuary 12, 2007',
@@ -107,20 +107,17 @@ export const SOCIALS: Social[] = [
   { icon: linkin, href: 'https://linkedin.com',  label: 'LinkedIn'  },
 ];
 
-// ── SKILL BARS (About page) ───────────────────────────────────
 export const SKILLS: Skill[] = [
   { label: 'Web Design',    percent: 85 },
   { label: 'Front-End Dev', percent: 78 },
   { label: 'UI/UX Design',  percent: 88 },
 ];
 
-// ── TECH TAGS (Resume page) ───────────────────────────────────
 export const TECH_TAGS: string[] = [
   'HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React',
   'Vite', 'Node.js', 'Git',
 ];
 
-// ── WORK EXPERIENCE (Resume page) ────────────────────────────
 export const EXPERIENCE: TimelineItem[] = [
   {
     date: '2026 – Present',
@@ -142,7 +139,6 @@ export const EXPERIENCE: TimelineItem[] = [
   },
 ];
 
-// ── EDUCATION (Resume page) ───────────────────────────────────
 export const EDUCATION: TimelineItem[] = [
   {
   date: '2026',
@@ -170,7 +166,6 @@ export const PROJECTS: Project[] = [
   
 ];
 
-// ── SERVICES ──────────────────────────────────────────────────
 export const SERVICES: Service[] = [
   { icon: web,    title:'Web Design',      desc:'Pixel-perfect, responsive websites designed with user experience and brand identity at the forefront.' },
   { icon: develop,           title:'Web Development', desc:'Clean, semantic front-end code bringing your designs to life with smooth interactions.' },
@@ -178,7 +173,6 @@ export const SERVICES: Service[] = [
   { icon: networkin,     title:'Networking',  desc:'Basic network setup, configuration, and troubleshooting for reliable connectivity.' },
 ];
 
-// ── CONTACT INFO ──────────────────────────────────────────────
 export const CONTACT_INFO: ContactItem[] = [
   { icon:'fas fa-map-marker-alt', label:'Location',     value:'Baguio City, Benguet' },
   { icon:'fas fa-envelope',       label:'Email',        value:'20237041@s.ubaguio.edu'               },

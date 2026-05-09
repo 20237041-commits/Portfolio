@@ -21,7 +21,6 @@ export default function Admin() {
   const [messages, setMessages] = useState<Message[]>([])
   const [loading,  setLoading]  = useState(false)
 
-  // ── Persist login across refresh ──────────────────────────────
   useEffect(() => {
     if (sessionStorage.getItem('admin_auth') === 'true') {
       setView('dashboard')
@@ -75,7 +74,6 @@ export default function Admin() {
     setPassword('')
   }
 
-  // ── Login screen ───────────────────────────────────────────────
   if (view === 'login') return (
     <div style={styles.loginWrap}>
       <form style={styles.loginBox} onSubmit={handleLogin}>
@@ -104,7 +102,6 @@ export default function Admin() {
     </div>
   )
 
-  // ── Dashboard ──────────────────────────────────────────────────
   return (
     <div style={styles.dashWrap}>
       <div style={styles.dashHeader}>
@@ -143,7 +140,6 @@ export default function Admin() {
   )
 }
 
-// ── Inline styles ──────────────────────────────────────────────
 const styles: Record<string, React.CSSProperties> = {
   loginWrap  : { minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0a0a0a' },
   loginBox   : { background: '#111', border: '1px solid #222', borderRadius: 14, padding: 40, display: 'flex', flexDirection: 'column', gap: 14, width: 340 },

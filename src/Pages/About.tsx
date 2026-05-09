@@ -1,27 +1,13 @@
-// ============================================================
-//  src/Pages/About.tsx  →  Route: /about
-//  ── ABOUT PAGE ──
-//
-//  React Router hook:
-//    useNavigate() — used by the "Download CV" button to send
-//    the user to /resume without a full page reload.
-//
-//  What to edit:
-//    • Bio paragraphs  → data/portfolioData.ts → PROFILE.bio
-//    • Personal info   → data/portfolioData.ts → PROFILE.info
-//    • Skill bars      → data/portfolioData.ts → SKILLS
-//    • Your photo      → data/portfolioData.ts → PROFILE.heroImage
-// ============================================================
+
 
 import { useEffect, useRef } from 'react'
-import { useNavigate }       from 'react-router-dom'    // ← Router
+import { useNavigate }       from 'react-router-dom'    
 import { PROFILE, SKILLS }   from '../Data/PortfolioData'
 
 export default function About() {
   const navigate = useNavigate()
   const barsRef  = useRef<HTMLDivElement>(null)
 
-  // Trigger CSS width transition after mount so bars animate in
   useEffect(() => {
     const t = setTimeout(() => {
       barsRef.current
@@ -36,7 +22,6 @@ export default function About() {
   return (
     <section className="page-wrap" id="about-page">
 
-      {/* ── Page header ── */}
       <header className="page-header">
         <p className="page-label">Get to know me</p>
         <h1 className="page-title">About <span>Me</span></h1>
@@ -48,24 +33,19 @@ export default function About() {
 
       <div className="about-grid">
 
-        {/* ── Photo column ── */}
-        {/* ↓ Image URL → data/portfolioData.ts → PROFILE.heroImage */}
+
         <div className="about-img-wrap">
           <img src={heroImage} alt={name} />
           <div className="img-frame" aria-hidden="true" />
         </div>
 
-        {/* ── Text column ── */}
         <div className="about-body">
-          {/* ↓ Tagline → PROFILE.tagline */}
           <h2 className="about-subtitle">{tagline}</h2>
 
-          {/* ↓ Paragraphs → PROFILE.bio */}
           {bio.map((para, i) => (
             <p className="about-para" key={i}>{para}</p>
           ))}
 
-          {/* Personal info grid — values from PROFILE.info */}
           <dl className="info-grid">
             {(
               [
@@ -89,13 +69,10 @@ export default function About() {
             </div>
           </dl>
 
-          {/* ↓ Navigates to /resume on click */}
           <button className="btn btn-primary" onClick={() => navigate('/resume')}>
-            <i className="fas fa-download" aria-hidden="true" /> Download CV
+            <i className="fas fa-download" aria-hidden="true" /> See CV
           </button>
 
-          {/* ── Skill bars — values from SKILLS ── */}
-          {/* ↓ Edit in data/portfolioData.ts → SKILLS */}
           <div className="skill-bars" ref={barsRef} aria-label="Skill levels">
             {SKILLS.map(sk => (
               <div className="skill-row" key={sk.label}>
@@ -104,7 +81,6 @@ export default function About() {
                   <span className="skill-pct">{sk.percent}%</span>
                 </div>
                 <div className="skill-track" role="progressbar" aria-valuenow={sk.percent} aria-valuemin={0} aria-valuemax={100}>
-                  {/* --w CSS custom property drives the animated width */}
                   <div
                     className="skill-fill"
                     style={{ '--w': `${sk.percent}%` } as React.CSSProperties}

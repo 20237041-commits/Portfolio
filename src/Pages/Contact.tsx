@@ -42,7 +42,6 @@ export default function Contact() {
       message   : formData.message,
     }
 
-    // ── MongoDB save ───────────────────────────────────────────
     const saveToMongo = fetch('https://your-railway-url.up.railway.app/contact', {
       method  : 'POST',
       headers : { 'Content-Type': 'application/json' },
@@ -52,7 +51,6 @@ export default function Contact() {
       return res.json()
     })
 
-    // ── EmailJS send ───────────────────────────────────────────
     const sendEmail = emailjs.send(
       import.meta.env.VITE_EMAIL_SERVICE_ID,
       import.meta.env.VITE_EMAIL_TEMPLATE_ID,
@@ -61,7 +59,6 @@ export default function Contact() {
     )
 
     try {
-      // ── Both fire at the same time ─────────────────────────
       await Promise.all([sendEmail, saveToMongo])
       setStatus('sent')
       setFormData(INITIAL_FORM)
@@ -84,7 +81,6 @@ export default function Contact() {
   return (
     <section className="page-wrap" id="contact-page">
 
-      {/* ── Page header ── */}
       <header className="page-header">
         <p className="page-label">Let's Talk</p>
         <h1 className="page-title">Get in <span>Touch</span></h1>
@@ -93,7 +89,6 @@ export default function Contact() {
 
       <div className="contact-grid">
 
-        {/* ── Left: contact info ── */}
         <div className="c-info">
           <h2 className="c-greeting">Don't be shy — say hello!</h2>
           {CONTACT_INFO.map((item, i) => (
@@ -109,10 +104,8 @@ export default function Contact() {
           ))}
         </div>
 
-        {/* ── Right: form — same structure as professor's Register form ── */}
         <form className="c-form" onSubmit={handleSubmit} noValidate>
 
-          {/* Name row — two fields side by side */}
           <div className="form-row">
             <div className="form-group">
               <label htmlFor="firstName">First Name</label>
@@ -177,7 +170,6 @@ export default function Contact() {
             />
           </div>
 
-          {/* Submit button */}
           <button
             type="submit"
             className="btn btn-primary"

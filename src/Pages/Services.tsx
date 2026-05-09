@@ -1,11 +1,4 @@
-// ============================================================
-//  src/Pages/Services.tsx  →  Route: /services
-//  ── SERVICES PAGE ──
-//  No router hooks needed — purely display.
-//
-//  What to edit:
-//    • Services list → data/portfolioData.ts → SERVICES
-// ============================================================
+
 
 import { SERVICES } from '../Data/PortfolioData'
 
@@ -19,15 +12,12 @@ export default function Services() {
         <div className="bar" />
       </header>
 
-      {/* ↓ Cards generated from data/portfolioData.ts → SERVICES */}
       <div className="svc-grid" role="list">
         {SERVICES.map((svc, i) => (
           <div className="svc-card" key={i} role="listitem">
-            {/* Watermark number */}
             <span className="svc-num" aria-hidden="true">
               {String(i + 1).padStart(2, '0')}
             </span>
-            {/* Icon */}
             <div className="svc-icon" aria-hidden="true">
               <img className={svc.icon} alt="" style={{ width: '24px', height: '30px', objectFit: 'contain' }} />
             </div>

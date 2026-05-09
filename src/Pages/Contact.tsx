@@ -42,7 +42,8 @@ export default function Contact() {
       message   : formData.message,
     }
 
-    const saveToMongo = fetch('https://your-railway-url.up.railway.app/contact', {
+    // ✅ Replace with this
+    const saveToMongo = fetch('https://portfolio-production-b5e5.up.railway.app/contact', {
       method  : 'POST',
       headers : { 'Content-Type': 'application/json' },
       body    : JSON.stringify(formData),

@@ -12,6 +12,14 @@ import ui from '../assets/ui.avif';
 import develop from '../assets/develop.jpg';
 import networkin from '../assets/networkin.jpg';
 
+import Controlled from '../assets/Controlled.png';
+import InfoSystem from '../assets/InfoSystem.png';
+import Props from '../assets/Props.png';
+import Sample from '../assets/Sample.png';
+import StudentInfoSystem from '../assets/StudentInfoSystem.png';
+import Registration from '../assets/Registration.png';
+
+
 
 
 
@@ -102,9 +110,9 @@ export const PROFILE: Profile = {
 };
 
 export const SOCIALS: Social[] = [
-  { icon: facebook ,  href: 'https://facebook.com',  label: 'Facebook'  },
-  { icon: instagram,   href: 'https://instagram.com', label: 'Instagram' },
-  { icon: linkin, href: 'https://linkedin.com',  label: 'LinkedIn'  },
+  { icon: facebook ,  href: 'https://www.facebook.com/jr.aclibon.54',  label: 'Facebook'  },
+  { icon: instagram,   href: 'https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.instagram.com%2Fjr_aclibon584620%3Figsh%3DMWJkNDlucmlsMWtydg%253D%253D%26fbclid%3DIwZXh0bgNhZW0CMTAAYnJpZBEyZnpHN2lwcU9aclp5MktiaXNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR4j1Zg-qgMT5GLTLWzL0rsrK6Ep1AzqGXjXodp8aFiDDTcF6AnYFfe1DHhMpA_aem_qIb9760WfalT6_ui4uT1xg&h=AUCHkHRuGIBv-MQlbLJfnZvXBQshvyJj1IbiKGOHbYQ8Mkdh6Pnx2YdIPQ4AfPXu11Ri4TV3EUKvNOd7XPtCCMbxWAJhzuK88PN7kn_YR3NEJvjAf4BClNPiha1Ei-0z02Px0g', label: 'Instagram' },
+  { icon: linkin, href: 'https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fjr-aclibon-3182b62b9%3Futm_source%3Dshare%26utm_campaign%3Dshare_via%26utm_content%3Dprofile%26utm_medium%3Dandroid_app%26fbclid%3DIwZXh0bgNhZW0CMTAAYnJpZBEyZnpHN2lwcU9aclp5MktiaXNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR5DpxBMK4L5PC6BWRfL86MSDcdWCJPfmMV0yK5uWKTBj2ypCACcUjG4exhNdg_aem_LNrmzfzGLxgI9SK5PJBkcg&h=AUCHkHRuGIBv-MQlbLJfnZvXBQshvyJj1IbiKGOHbYQ8Mkdh6Pnx2YdIPQ4AfPXu11Ri4TV3EUKvNOd7XPtCCMbxWAJhzuK88PN7kn_YR3NEJvjAf4BClNPiha1Ei-0z02Px0g',  label: 'LinkedIn'  },
 ];
 
 export const SKILLS: Skill[] = [
@@ -161,9 +169,14 @@ export const PROJECTS: Project[] = [
   { cat:'web',   title:'Workout Tracker',        label:'Web Design',  img:Track, link:'https://20237041-commits.github.io/TrackThatGain/' },
   { cat:'web',   title:'Feed Back System',        label:'Web Design',  img:feedback, link:'https://20237041-commits.github.io/Finals-1/' },
   { cat:'network', title:'Networking Profile',       label:'Networking', img:networkme, link:'https://20237041-commits.github.io/networking/' },
-  
 
-  
+  { cat:'web',   title:'Student Information Management System',        label:'Web Design',  img:StudentInfoSystem, link:'https://20237041-commits.github.io/StudentInfoSystem/' },
+  { cat:'web',   title:'Controlled Form / Uncontrolled Form',        label:'Web Design',  img:Controlled, link:'https://20237041-commits.github.io/MG_Lab_3/?authuser=0' },
+  { cat:'web',   title:'University Event Dashboard',        label:'Web Design',  img:Registration, link:'https://20237041-commits.github.io/MG_Lab4_Aclibon/' },
+  { cat:'web',   title:'TypeScript Props',        label:'Web Design',  img:Props, link:'https://20237041-commits.github.io/FGB_LAB_2/?authuser=0' },
+  { cat:'web',   title:'Student  Information System',        label:'Web Design',  img:InfoSystem, link:'https://20237041-commits.github.io/FGB_LAB_3/?authuser=0' },
+  { cat:'web',   title:'Sample Resume',        label:'Web Design',  img:Sample, link:'https://20237041-commits.github.io/UNIT1_LESSON1_A_Acclibonnnn/?authuser=0' },
+
 ];
 
 export const SERVICES: Service[] = [
